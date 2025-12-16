@@ -13,13 +13,14 @@ export default function ResizeOptions({ options, setOptions }) {
   const resize = options.resize;
 
   const unit = String(resize.unit || 'px');
-  const showDpi = unit !== 'px' && unit !== '%';
+  const showDpi = true;
   const presetValue = String(options.preset || '').toLowerCase();
   const isPrintPreset = presetValue.startsWith('print_') || presetValue.includes('a4') || presetValue.includes('letter');
   const effectiveDpi =
     Number(options.dpi) ||
     (presetValue && !isPrintPreset ? 72 : isPrintPreset ? 300 : showDpi ? 300 : 72);
-  const isJpeg = String(options.format || 'jpeg').toLowerCase() === 'jpeg';
+  const formatLower = String(options.format || 'jpeg').toLowerCase();
+  const isJpeg = formatLower === 'jpeg' || formatLower === 'jpg';
   const canEditDpi = showDpi;
 
   function setResize(patch) {
@@ -64,13 +65,19 @@ export default function ResizeOptions({ options, setOptions }) {
               setOptions((p) => ({
                 ...p,
                 format: nextFormat,
-                background: String(nextFormat).toLowerCase() === 'jpeg' ? 'white' : p.background,
+                background: ['jpeg', 'jpg'].includes(String(nextFormat).toLowerCase()) ? 'white' : p.background,
               }));
             }}
           >
-            <option value="jpeg">JPG</option>
+            <option value="jpg">JPG</option>
+            <option value="jpeg">JPEG</option>
             <option value="png">PNG</option>
-            <option value="webp">WEBP</option>
+            <option value="webp">WebP</option>
+            <option value="avif">AVIF</option>
+            <option value="heic">HEIC</option>
+            <option value="heif">HEIF</option>
+            <option value="tiff">TIFF</option>
+            <option value="gif">GIF (static)</option>
           </select>
         </label>
       </div>
@@ -111,9 +118,12 @@ export default function ResizeOptions({ options, setOptions }) {
             <input
               type="number"
               min={1}
-              value={options.dpi}
-              onChange={(e) => setDpi(e.target.value)}
-              placeholder="e.g. 300"
+              value={options.dpi || 300}
+              onChange={(e) => {
+                const newDpi = e.target.value ? Number(e.target.value) : 300;
+                setDpi(newDpi);
+              }}
+              placeholder="300"
             />
           </label>
           <div className="muted" style={{ alignSelf: 'end' }}>
