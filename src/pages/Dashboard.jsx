@@ -98,10 +98,11 @@ export default function Dashboard() {
         const ext = format === 'jpeg' ? 'jpg' : format;
         const fallbackName = `processed-image.${ext}`;
         const name = inferred || fallbackName;
-
+        const url = URL.createObjectURL(blob);
+        
         setSingleBlob(blob);
         setSingleName(name);
-        downloadBlob({ blob, filename: name });
+        setResults([{ name, url }]);
         return;
       }
 
@@ -187,7 +188,9 @@ export default function Dashboard() {
         {error ? <div className="error" style={{ marginTop: 12 }}>{error}</div> : null}
       </div>
 
-      <BatchPreview items={results} zipBlob={zipBlob} onClear={clearResults} />
+      {(results.length > 0 || singleBlob) && (
+        <BatchPreview items={results} zipBlob={zipBlob} onClear={clearResults} />
+      )}
     </div>
   );
 }
