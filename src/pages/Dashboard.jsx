@@ -276,10 +276,9 @@ export default function Dashboard() {
         </div>
       )}
       
-      <h1>Image Resizer</h1>
       <div className="row space">
         <div>
-          <h2>Dashboard</h2>
+          <h1>Dashboard</h1>
           <div className="muted">Logged in as {user?.email}</div>
         </div>
         <button className="btn secondary" type="button" onClick={onLogout}>

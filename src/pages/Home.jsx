@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <div className="container">
       <div className="card">
-        <h1>Secure Image Processor</h1>
+        <h1>Online Image Resizer & Converter</h1>
         <p className="muted">
-          Upload images, resize using multiple units, convert formats, compress, crop, remove metadata, and
-          download results as a ZIP.
+          Upload one or more images, resize them in pixels or percentages, change the format, adjust quality,
+          remove metadata, and download everything in a single ZIP – all from your browser.
         </p>
 
         <div className="row gap">
