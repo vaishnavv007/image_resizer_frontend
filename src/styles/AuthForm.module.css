@@ -1,0 +1,252 @@
+:root {
+  /* Light theme (default) */
+  --auth-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --input-bg: #f8fafc;
+  --input-border: #e2e8f0;
+  --input-focus-bg: #ffffff;
+  --input-focus-border: #4299e1;
+  --input-focus-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  --error-bg: #fff5f5;
+  --error-border: #e53e3e;
+  --error-text: #e53e3e;
+  --button-bg: #4299e1;
+  --button-hover: #3182ce;
+  --button-disabled: #a0aec0;
+  --link-color: #4299e1;
+  --link-hover: #2c5282;
+  --password-strength-bg: #e2e8f0;
+  --divider: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --auth-bg: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  --card-bg: #2d3748;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted: #a0aec0;
+  --input-bg: #4a5568;
+  --input-border: #4a5568;
+  --input-focus-bg: #4a5568;
+  --input-focus-border: #63b3ed;
+  --input-focus-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+  --error-bg: #742a2a;
+  --error-border: #e53e3e;
+  --error-text: #fc8181;
+  --button-bg: #4299e1;
+  --button-hover: #63b3ed;
+  --button-disabled: #4a5568;
+  --link-color: #63b3ed;
+  --link-hover: #90cdf4;
+  --password-strength-bg: #4a5568;
+  --divider: #4a5568;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--auth-bg);
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+h2 {
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.inputGroup {
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: var(--input-focus-shadow);
+  background-color: var(--input-focus-bg);
+}
+
+.error {
+  color: var(--error-text);
+  background-color: var(--error-bg);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  border-left: 4px solid var(--error-border);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, opacity 0.3s ease;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background: var(--button-hover);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  background: var(--button-disabled);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.7;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.link {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.passwordStrength {
+  height: 4px;
+  background: var(--password-strength-bg);
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.strengthBar {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .input {
+  color: #f7fafc;
+}
+
+[data-theme="dark"] .input::placeholder {
+  color: #a0aec0;
+  opacity: 0.6;
+}
+
+/* For the show/hide password button */
+.passwordToggle {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.passwordToggle:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--divider);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1em;
+}
