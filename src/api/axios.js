@@ -20,7 +20,7 @@ if (isProd) {
   }
 }
 
-const apiBase = configuredApiBase || 'http://localhost:5000';
+const apiBase = configuredApiBase || 'https://image-resizer-w1il.onrender.com';
 
 export const api = axios.create({
   baseURL: `${apiBase}/api`,
